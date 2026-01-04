@@ -3,76 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masterpiece Portfolio | Glassmorphism 2.0</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
-<link rel="stylesheet" href="assists/css/style.css">
+    <title>Premium Registration | Glass UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assists/css/style.css">
 </head>
 <body>
 
-    <div id="cursor-dot"></div>
-    <div id="cursor-outline"></div>
-    <div class="mesh-wrapper">
+    <div class="bg-wrapper">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-    <div class="noise"></div>
-
-    <nav>
-        <div class="logo" style="font-weight: 800; font-family: 'Space Grotesk';">UNSEEN<span class="accent-text">.</span></div>
-        <ul class="nav-links">
-            <li><a href="#work" class="mag-link">Projects</a></li>
-            <li><a href="#contact" class="mag-link">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <section class="hero">
-            <div class="hero-box reveal">
-                <span class="tag">BASED IN LONDON</span>
-                <h1>Creative<br><span class="gradient-text">Developer</span><br><span class="accent-text">& Designer</span></h1>
-                <p style="color: var(--text-dim); max-width: 450px; font-size: 1.1rem; margin-top: 2rem;">
-                    Solving complex digital problems through high-end aesthetics and user-centric engineering.
-                </p>
-            </div>
-        </section>
-
-        <section id="work" style="padding: 100px 0;">
-            <h2 class="section-title reveal">Featured Projects</h2>
-            <div class="work-grid">
-                <div class="glass-card project-card reveal js-tilt">
-                    <span class="tag">UI/UX DESIGN</span>
-                    <h3>Hyper-Reality Dashboard</h3>
-                    <p style="color: var(--text-dim); margin: 1rem 0;">A futuristic data console using glassmorphism and 3D rendering.</p>
-                    <div style="height: 150px; background: linear-gradient(45deg, #8b5cf6, #3b82f6); border-radius: 15px;"></div>
-                </div>
-                <div class="glass-card project-card reveal js-tilt">
-                    <span class="tag">DEVELOPMENT</span>
-                    <h3>Neuro-Interface</h3>
-                    <p style="color: var(--text-dim); margin: 1rem 0;">Web3 integration platform for secure neural data assets.</p>
-                    <div style="height: 150px; background: linear-gradient(45deg, #06b6d4, #10b981); border-radius: 15px;"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" style="padding: 150px 0;">
-            <div class="glass-card reveal contact-flex">
-                <div>
-                    <h2 style="text-align: left; margin-bottom: 1rem;">Let's talk about <br><span class="accent-text">the future.</span></h2>
-                    <p style="color: var(--text-dim);">Have an idea that breaks the mold? Send me a message and let's build something unique.</p>
-                </div>
-                <form>
-                    <input type="text" placeholder="Full Name">
-                    <input type="email" placeholder="Email Address">
-                    <textarea placeholder="Your Vision..."></textarea>
-                    <button type="submit" class="btn-magnetic">Send Message</button>
-                </form>
-            </div>
-        </section>
     </div>
 
-<script src="assists/js/script.js"></script>
+    <div class="form-container">
+        <div id="form-ui">
+            <header>
+                <h1>Join the Lab</h1>
+                <p>Enter your credentials to create an account.</p>
+            </header>
+
+            <form id="regForm">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="email@example.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" id="submitBtn">Sign Up</button>
+            </form>
+        </div>
+
+        <div id="success-ui" class="hidden">
+            <div class="icon-circle">✓</div>
+            <h2>Account Created!</h2>
+            <p>Welcome to the community. Redirecting you shortly...</p>
+            <button onclick="window.location.reload()" class="btn-secondary">Back to Start</button>
+        </div>
+    </div>
+
+    <script src="assists/js/script.js"></script>
 </body>
 </html>
