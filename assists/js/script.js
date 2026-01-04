@@ -1,32 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const regForm = document.getElementById('regForm');
-    const formUI = document.getElementById('form-ui');
-    const successUI = document.getElementById('success-ui');
-    const submitBtn = document.getElementById('submitBtn');
-
-    regForm.addEventListener('submit', (e) => {
-        // Prevent the page from reloading
+    // Login Logic
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        const email = document.getElementById('email').value;
+        alert(`Redirecting ${email} to the dashboard...`);
+    });
 
-        // Change button state
-        submitBtn.textContent = 'Creating Account...';
-        submitBtn.style.opacity = '0.7';
-        submitBtn.disabled = true;
-
-        // Simulate a network request (1.5 seconds)
-        setTimeout(() => {
-            // Hide the form and show the success message
-            formUI.classList.add('hidden');
-            successUI.classList.remove('hidden');
-
-            // Log data for testing
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value
-            };
-            console.log("Registration Success:", formData);
-            
-        }, 1500);
+    // Subscription Logic
+    const subBtn = document.getElementById('subBtn');
+    subBtn.addEventListener('click', () => {
+        const email = document.getElementById('subEmail').value;
+        if (email.includes('@')) {
+            alert("Subscription successful! Welcome to the TechFlow community.");
+            document.getElementById('subEmail').value = '';
+        } else {
+            alert("Please enter a valid email address.");
+        }
     });
 });
