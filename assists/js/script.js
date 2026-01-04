@@ -1,21 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Login Logic
-    const loginForm = document.getElementById('loginForm');
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        alert(`Redirecting ${email} to the dashboard...`);
+    const themeBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    const icon = themeBtn.querySelector('i');
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        if (body.classList.contains('light-mode')) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
     });
 
-    // Subscription Logic
-    const subBtn = document.getElementById('subBtn');
-    subBtn.addEventListener('click', () => {
-        const email = document.getElementById('subEmail').value;
-        if (email.includes('@')) {
-            alert("Subscription successful! Welcome to the TechFlow community.");
-            document.getElementById('subEmail').value = '';
-        } else {
-            alert("Please enter a valid email address.");
-        }
+    // Form animation logic
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        btn.innerHTML = 'Processing... <i class="fas fa-spinner fa-spin"></i>';
+        setTimeout(() => {
+            alert("Secure Access Granted!");
+            btn.innerHTML = 'Sign In <i class="fas fa-arrow-right"></i>';
+        }, 1500);
     });
 });
