@@ -1,0 +1,167 @@
+:root {
+            --bg: #020617;
+            --accent: #8b5cf6; /* Electric Violet */
+            --accent-glow: rgba(139, 92, 246, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        /* --- Reset & Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important; /* Force custom cursor */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+        /* --- Custom Interactive Cursor --- */
+        #cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10001;
+        }
+
+        #cursor-outline {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.15s ease-out, background 0.3s;
+        }
+
+        /* --- Living Mesh Background --- */
+        .mesh-wrapper {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+            background: radial-gradient(at 0% 0%, #0f172a 0, transparent 50%),
+                        radial-gradient(at 100% 100%, #1e1b4b 0, transparent 50%);
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: move 20s infinite alternate;
+        }
+
+        .blob-1 { background: var(--accent); top: -10%; left: -10%; }
+        .blob-2 { background: #06b6d4; bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { background: #ec4899; top: 40%; left: 30%; animation-delay: -10s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(200px, 100px) scale(1.2); }
+        }
+
+        /* Noise Texture Overlay */
+        .noise {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.04;
+            pointer-events: none;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+
+        /* --- Components --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Glassmorphism Navigation */
+        nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            z-index: 999;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.01);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: white; }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; align-items: center; }
+        .hero-box { position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.9; margin: 1rem 0; letter-spacing: -3px; }
+        .gradient-text { background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .accent-text { color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
+
+        /* Floating Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .section-title { font-size: 3rem; margin-bottom: 3rem; text-align: center; }
+
+        /* Work Grid */
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .project-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.05); }
+
+        .tag { display: inline-block; padding: 5px 12px; border-radius: 50px; background: rgba(139, 92, 246, 0.1); color: var(--accent); font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; }
+
+        /* Contact Section */
+        .contact-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        input, textarea {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0; color: white; margin-bottom: 2rem; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--accent); }
+
+        .btn-magnetic {
+            background: white; color: black; border: none; padding: 1.2rem 3rem;
+            border-radius: 50px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; transition: 0.3s;
+        }
+
+        /* --- Scroll Reveal Classes --- */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .contact-flex { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4rem; }
+        }
